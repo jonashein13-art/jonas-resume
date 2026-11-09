@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f4f6fb">
+  <meta name="description" content="Jonas — Roblox development, moderation and roleplay experience.">
+  <title>Jonas | Portfolio</title>
+  <style>
+    :root {
+      --bg: #f4f6fb;
+      --surface: #ffffff;
+      --surface-2: #edf1fa;
+      --text: #10182b;
+      --muted: #66718a;
+      --line: #dfe5f0;
+      --accent: #5865f2;
+      --accent-2: #8490ff;
+      --shadow: 0 18px 55px rgba(31, 43, 78, .09);
+      --radius: 24px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 88% 8%, rgba(132,144,255,.16), transparent 27rem),
+        radial-gradient(circle at 5% 42%, rgba(88,101,242,.08), transparent 25rem),
+        var(--bg);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.55;
+    }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+    header {
+      position: sticky; top: 0; z-index: 10;
+      backdrop-filter: blur(18px);
+      background: rgba(244,246,251,.82);
+      border-bottom: 1px solid rgba(223,229,240,.8);
+    }
+    .nav { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .brand { font-size: 1.12rem; font-weight: 950; letter-spacing: .13em; }
+    .brand span { color: var(--accent); }
+    .nav-links { display: flex; align-items: center; gap: 7px; flex-wrap: wrap; }
+    .nav-links a {
+      color: var(--muted); font-size: .88rem; font-weight: 750;
+      padding: 10px 13px; border-radius: 999px; transition: .2s ease;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--accent); background: #e9ecff; }
+    .hero { padding: 94px 0 58px; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 9px;
+      color: var(--accent); background: #e9ecff; border: 1px solid #dce1ff;
+      border-radius: 999px; padding: 8px 13px; font-size: .76rem;
+      font-weight: 900; letter-spacing: .12em; text-transform: uppercase;
+    }
+    .dot { width: 7px; height: 7px; border-radius: 50%; background: #43bd87; box-shadow: 0 0 0 4px rgba(67,189,135,.13); }
+    h1 { font-size: clamp(4rem, 11vw, 8.3rem); line-height: .92; letter-spacing: -.085em; margin: 25px 0 22px; font-weight: 950; }
+    h1 .gradient { color: var(--accent); }
+    .hero-copy { max-width: 680px; color: var(--muted); font-size: clamp(1.08rem, 2vw, 1.3rem); }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 30px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; border-radius: 14px; padding: 13px 19px; font-weight: 850; transition: transform .2s, box-shadow .2s; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { color: white; background: var(--accent); box-shadow: 0 10px 24px rgba(88,101,242,.24); }
+    .btn-secondary { background: var(--surface); border: 1px solid var(--line); }
+    .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 28px 0 74px; }
+    .stat { background: rgba(255,255,255,.82); border: 1px solid var(--line); border-radius: 20px; padding: 23px; box-shadow: 0 8px 30px rgba(31,43,78,.04); }
+    .stat strong { display: block; font-size: clamp(1.8rem, 4vw, 2.8rem); letter-spacing: -.06em; line-height: 1.1; }
+    .stat span { display: block; margin-top: 8px; color: var(--muted); font-size: .78rem; font-weight: 850; letter-spacing: .09em; text-transform: uppercase; }
+    section { scroll-margin-top: 100px; padding: 38px 0 52px; }
+    .section-head { margin-bottom: 23px; }
+    .kicker { color: var(--accent); font-size: .76rem; letter-spacing: .14em; font-weight: 950; text-transform: uppercase; }
+    h2 { font-size: clamp(2.2rem, 5vw, 3.7rem); letter-spacing: -.065em; line-height: 1.02; margin: 8px 0 10px; }
+    .section-intro { color: var(--muted); max-width: 650px; font-size: 1.05rem; }
+    .cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .card {
+      position: relative; overflow: hidden; text-align: left; width: 100%;
+      border: 1px solid var(--line); background: var(--surface);
+      border-radius: var(--radius); padding: 26px; color: var(--text);
+      cursor: pointer; box-shadow: var(--shadow); transition: .22s ease;
+      font: inherit;
+    }
+    .card:hover { transform: translateY(-5px); border-color: #bdc5ff; box-shadow: 0 22px 55px rgba(31,43,78,.13); }
+    .card-top { display: flex; align-items: center; justify-content: space-between; gap: 14px; }
+    .icon {
+      width: 48px; height: 48px; display: grid; place-items: center;
+      border-radius: 15px; background: #edf0ff; color: var(--accent); font-size: 1.35rem;
+    }
+    .arrow { color: var(--accent); font-size: 1.35rem; font-weight: 900; }
+    .card h3 { font-size: clamp(1.5rem, 3vw, 2rem); letter-spacing: -.045em; margin: 22px 0 7px; }
+    .card p { color: var(--muted); margin: 0; font-size: 1rem; }
+    .detail {
+      display: none; margin-top: 18px; padding: 25px;
+      border: 1px solid #dfe3ff; background: linear-gradient(135deg, #fff, #f0f2ff);
+      border-radius: var(--radius); box-shadow: var(--shadow);
+      animation: rise .25s ease both;
+    }
+    .detail.open { display: block; }
+    @keyframes rise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+    .detail-head { display: flex; justify-content: space-between; gap: 18px; align-items: flex-start; }
+    .detail h3 { font-size: clamp(1.65rem, 4vw, 2.5rem); letter-spacing: -.05em; margin: 0 0 12px; }
+    .close { border: 0; background: #e5e9ff; color: var(--accent); border-radius: 12px; padding: 8px 12px; cursor: pointer; font-weight: 900; }
+    .detail ul { margin: 10px 0 0; padding-left: 22px; }
+    .detail li { margin: 10px 0; font-size: 1.06rem; }
+    .skills-grid { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+    .skill { background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 12px 17px; font-weight: 800; box-shadow: 0 5px 18px rgba(31,43,78,.04); }
+    .skills-card { background: #121a31; color: white; border-radius: var(--radius); padding: clamp(25px, 5vw, 44px); margin-top: 16px; }
+    .skills-card .kicker { color: #aeb6ff; }
+    .skills-card p { color: #c0c8dc; max-width: 650px; }
+    .skills-card .skill { background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.13); color: #f4f6ff; }
+    footer { margin-top: 60px; padding: 30px 0 42px; border-top: 1px solid var(--line); color: var(--muted); font-size: .9rem; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    @media (max-width: 700px) {
+      .nav { align-items: flex-start; flex-direction: column; padding: 15px 0; gap: 8px; }
+      .nav-links { gap: 2px; }
+      .nav-links a { padding: 8px 10px; font-size: .78rem; }
+      .hero { padding-top: 66px; }
+      .stats { grid-template-columns: 1fr; margin-bottom: 46px; }
+      .cards { grid-template-columns: 1fr; }
+      .card { padding: 22px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="#home">JONAS<span>.</span></a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#home" class="active">Home</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero" id="home">
+      <div class="eyebrow"><span class="dot"></span> Personal portfolio</div>
+      <h1>HEY, I'M<br><span class="gradient">JONAS.</span></h1>
+      <p class="hero-copy">Welcome to my portfolio. Explore my experience in Roblox development, community moderation and military roleplay, along with the skills I have built along the way.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#experience">Explore my experience ↗</a>
+        <a class="btn btn-secondary" href="#skills">View my skills</a>
+      </div>
+    </section>
+
+    <div class="stats" aria-label="Portfolio highlights">
+      <div class="stat"><strong>900K+</strong><span>Contributed to 900K+ visits</span></div>
+      <div class="stat"><strong>2 Years</strong><span>Military RP experience</span></div>
+      <div class="stat"><strong>70K+</strong><span>Roblox group experience</span></div>
+    </div>
+
+    <section id="experience">
+      <div class="section-head">
+        <div class="kicker">What I've done</div>
+        <h2>Explore my experience.</h2>
+        <p class="section-intro">Choose an area to read more about my background and experience.</p>
+      </div>
+
+      <div class="cards">
+        <button class="card" data-panel="studio" aria-expanded="false">
+          <div class="card-top"><span class="icon">⌘</span><span class="arrow">↗</span></div>
+          <h3>Roblox Studio</h3>
+          <p>Development, projects and helping others build their games.</p>
+        </button>
+        <button class="card" data-panel="moderation" aria-expanded="false">
+          <div class="card-top"><span class="icon">⬡</span><span class="arrow">↗</span></div>
+          <h3>Moderation</h3>
+          <p>Staff leadership, moderation and intelligence experience.</p>
+        </button>
+        <button class="card" data-panel="rp" aria-expanded="false">
+          <div class="card-top"><span class="icon">▣</span><span class="arrow">↗</span></div>
+          <h3>Roblox RP Games</h3>
+          <p>Two years of military roleplay experience and community knowledge.</p>
+        </button>
+        <button class="card" data-panel="skills" aria-expanded="false">
+          <div class="card-top"><span class="icon">✳</span><span class="arrow">↗</span></div>
+          <h3>Skills</h3>
+          <p>Leadership, teamwork, problem-solving and more.</p>
+        </button>
+      </div>
+
+      <article class="detail" id="studio" aria-live="polite">
+        <div class="detail-head"><div><div class="kicker">01 / Development</div><h3>Roblox Studio</h3></div><button class="close" aria-label="Close section">✕</button></div>
+        <ul>
+          <li>Worked as a developer for several Roblox British Army groups.</li>
+          <li>Created my own Roblox game.</li>
+          <li>Helped friends with the development and creation of their games.</li>
+        </ul>
+      </article>
+      <article class="detail" id="moderation" aria-live="polite">
+        <div class="detail-head"><div><div class="kicker">02 / Community management</div><h3>Moderation</h3></div><button class="close" aria-label="Close section">✕</button></div>
+        <ul>
+          <li>Served as Overseer, and previously Chief of Staff, in a Roblox group with over 70,000 members.</li>
+          <li>Built moderation experience across several smaller Roblox groups.</li>
+          <li>Served in an Intelligence Corps, developing experience in research, information assessment and HUMINT-related skills.</li>
+        </ul>
+      </article>
+      <article class="detail" id="rp" aria-live="polite">
+        <div class="detail-head"><div><div class="kicker">03 / Roleplay</div><h3>Roblox RP Games</h3></div><button class="close" aria-label="Close section">✕</button></div>
+        <ul>
+          <li>Two years of military roleplay experience.</li>
+          <li>Experienced different stages of British Army communities, including their growth and decline.</li>
+          <li>Developed an understanding of military roleplay structures, ranks and community operations.</li>
+        </ul>
+      </article>
+      <article class="detail" id="skills-panel" aria-live="polite">
+        <div class="detail-head"><div><div class="kicker">04 / What I bring</div><h3>My Skills</h3></div><button class="close" aria-label="Close section">✕</button></div>
+        <ul>
+          <li>Strong leadership skills and experience in management positions.</li>
+          <li>Comfortable working independently or as part of a team.</li>
+          <li>Strong intelligence skills, including experience across a range of HUMINT-related areas.</li>
+          <li>Problem-solving mindset: when I identify a problem, I work to find a solution.</li>
+        </ul>
+      </article>
+    </section>
+
+    <section id="skills">
+      <div class="skills-card">
+        <div class="kicker">My strengths</div>
+        <h2>Skills that I bring.</h2>
+        <p>I value clear communication, taking responsibility and finding solutions. I can adapt to working independently or alongside a team.</p>
+        <div class="skills-grid">
+          <span class="skill">Leadership</span>
+          <span class="skill">Management</span>
+          <span class="skill">Teamwork</span>
+          <span class="skill">Independent Work</span>
+          <span class="skill">Problem-Solving</span>
+          <span class="skill">Moderation</span>
+          <span class="skill">Intelligence Research</span>
+          <span class="skill">HUMINT</span>
+          <span class="skill">Roblox Development</span>
+          <span class="skill">Community Operations</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <span>© <span id="year"></span> Jonas. Personal portfolio.</span>
+      <span>Built to showcase experience and skills.</span>
+    </div>
+  </footer>
+
+  <script>
+    const cards = document.querySelectorAll('.card');
+    const panels = document.querySelectorAll('.detail');
+    cards.forEach(card => {
+      card.addEventListener('click', () => {
+        const key = card.dataset.panel;
+        const panelId = key === 'skills' ? 'skills-panel' : key;
+        const target = document.getElementById(panelId);
+        const wasOpen = target.classList.contains('open');
+        panels.forEach(panel => panel.classList.remove('open'));
+        cards.forEach(item => item.setAttribute('aria-expanded', 'false'));
+        if (!wasOpen) {
+          target.classList.add('open');
+          card.setAttribute('aria-expanded', 'true');
+          target.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+      });
+    });
+    document.querySelectorAll('.close').forEach(button => {
+      button.addEventListener('click', () => {
+        const panel = button.closest('.detail');
+        panel.classList.remove('open');
+        const key = panel.id === 'skills-panel' ? 'skills' : panel.id;
+        document.querySelector(`[data-panel="${key}"]`).setAttribute('aria-expanded', 'false');
+      });
+    });
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const navLinks = document.querySelectorAll('.nav-links a');
+    const sections = [...document.querySelectorAll('main section[id]')];
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinks.forEach(link => link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id));
+        }
+      });
+    }, { rootMargin: '-35% 0px -55% 0px' });
+    sections.forEach(section => observer.observe(section));
+  </script>
+</body>
+</html>
